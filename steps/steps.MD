@@ -19,6 +19,7 @@ Having figured out the data extraction and structured the data table, the remain
 While I'm familiar with AWS Redshift, its usage isn't part of the free tier (except for a 2-month free trial). To exhibit experience with various AWS services, I pondered two potential solutions:
 1. Storing data in S3 in JSON or Parquet format, considering real-world scenarios where data often requires a well-compressed format.
 2. Storing data in RDS.
+
 After researching, I found that although Tableau is working on integrating a connector with AWS S3, it's still in the beta phase. Therefore, I had to opt for solely storing the data in RDS.
 For additional information on Tableau and Amazon S3 integration, you can refer to the [Tableau documentation here](https://help.tableau.com/current/pro/desktop/es-es/examples_amazons3.htm).
 
