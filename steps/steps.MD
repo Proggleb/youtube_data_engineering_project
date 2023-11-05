@@ -11,7 +11,7 @@ During this phase, I encountered challenges in retrieving other data such as lik
 
 I decided to use Python threads to simulate a professional environment where this technique is commonly used to process a large amount of data.
 
-Once I had a fully functional Python script capable of retrieving various data such as likes, comments, views, and the video's publication date, I contemplated how to model the data for subsequent visualization in Tableau. Given the data's structure, I opted for the simplest approach: storing it in a table within a database. Click here to see the [code of the Python script](script/youtube_script.py).
+Once I had a fully functional Python script capable of retrieving various data such as likes, comments, views, and the video's publication date, I contemplated how to model the data for subsequent visualization in Tableau. Given the data's structure, I opted for the simplest approach: storing it in a table within a database. Click here to see the [code of the Python script](../script/youtube_script.py).
 
 Having figured out the data extraction and structured the data table, the remaining puzzle was how to execute the script within AWS and where to store the information.
 
