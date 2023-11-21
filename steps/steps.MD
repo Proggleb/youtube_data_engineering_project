@@ -61,14 +61,24 @@ Once I successfully installed PostgreSQL and the necessary Python libraries (for
 However, I encountered difficulties with the 'crontab' command. Installing 'cronie' was one of the solutions that allowed me to view the cron logs. [Installing CronTab on Amazon Linux 2023 EC2](https://jainsaket-1994.medium.com/installing-crontab-on-amazon-linux-2023-ec2-98cf2708b171) Eventually, the functional cron command I used was:
 
 ```bash
-0 18 * * * root /usr/bin/python3 /home/scripts/youtube_script.py
+0 18 * * * root /usr/bin/python3 /home/scripts/youtube_get_metadata_script.py
 ```
 
-This cron job was set to execute the Python script automatically daily at 6:00 PM. To see the logs you use the command:
+This cron job was set to execute the Python script automatically daily at 6:00 PM. You could save cron job with the following command
 
 ```bash
+sudo nano /etc/cron.d/my_cron_job
+```
+
+To see the full log or only the most recent logs and the status of the cron service you should use next commands:
+
+```bash
+sudo journalctl -u crond.service
+sudo journalctl -fu crond.service
 sudo systemctl status crond.service
 ```
+
+Also remember that if you are using environment variables in your Python Script, then you need to load this environment variables to the cron job. I recommend to read this post: [Load Environment Variables in a Cron Job](https://www.tutorialspoint.com/load-environment-variables-in-a-cron-job#:~:text=When%20crontab%20runs%20a%20command,environmental%20variables%20to%20function%20correctly.)
 
 Another aspect I learned was how to interact with PostgreSQL directly from the command line. Throughout my journey, I had mainly used the DBeaver graphical interface, so this was a new experience for me. To access the database from the EC2 instance, the command used was:
 
@@ -78,11 +88,13 @@ psql -h host -U user -d DatabaseName
 
 After entering this command, the console prompted me to input the password. During this interaction, I discovered that you can use various commands such as \d, \dt, \dn, and \q to view tables, schemas, or exit the database. These commands proved to be incredibly useful, simplifying the process of querying common information and navigating within the database.
 
+Next you need to execute simple queries to Create the Schema and the Table where you going to store data and remember to checkout that it correspond to the same names in your Python Script.
+
 Finally, with the script running on the EC2 instance, the data was steadily accumulating in the RDS database day by day.
 
 ## Step 4: Tableau
 The next step was to establish the connection between RDS and Tableau. To do this, I needed to check the settings of the security group or VPC, depending on the AWS VPC configuration. It's crucial to remember that when initially setting up your RDS, you should configure it to be publicly accessible.
 
-Afterward, I created the dashboard showcasing the YouTube data. However, for publishing the dashboard on Tableau Public, I chose to use a CSV file to host it on the site, enabling users to download, modify, or replace the data with that of their favorite artist. Nevertheless, the primary aim was to establish a direct connection with RDS on their local computer.
+Afterward, I created the dashboard showcasing the YouTube data. However, for publishing the dashboard on Tableau Public, I chose to use a CSV file to host it on the site, enabling users to download, modify, or replace the data with that of their favorite artist. I know about the use of "Extracts" in Tableau, but I don't understand one problem that I had with this process, and it's seems different from previous Tableau Versions (currently 2023.3) Nevertheless, the primary aim was to establish a direct connection with RDS on their local computer.
 
 This marked the completion of the project, culminating in the creation of a dashboard displaying YouTube data in Tableau. The flexibility to either use Tableau Public or set up a direct connection with RDS on a local machine offered versatility in accessing and utilizing the data.
