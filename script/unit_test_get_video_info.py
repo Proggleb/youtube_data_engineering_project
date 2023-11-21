@@ -8,7 +8,7 @@ youtube_key = os.environ.get('YOUTUBE_API_KEY')
 
 class TestGetVideoInfo(unittest.TestCase):
 
-    @patch('lesserafim.googleapiclient.discovery.build')
+    @patch('youtube_get_metadata_script.googleapiclient.discovery.build')
     def test_get_video_info(self, mock_youtube_build):
         # Simulate answer from Youtube API
         mock_execute = MagicMock()
