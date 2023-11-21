@@ -8,10 +8,18 @@ I began by exploring the YouTube API using the Google Cloud Console. I gathered 
 
 I carefully planned how to structure the gathered data by choosing a table format for efficient organization. Then, I used the AWS free tier to set up an EC2 instance with an Amazon/Linux 2023 OS. This EC2 instance was methodically configured, installing essential software and libraries required for running a Python script designed for data extraction and storage. The extracted information was systematically stored in an AWS RDS PostgreSQL database. I ensured a strong connection between the EC2 instance and the database to seamlessly transfer and store data, all without incurring any costs.
 
-I used Tableau Desktop to gain a comprehensive understanding of metrics like likes, views, and comments on the music videos. This visual analytics tool enabled the creation of real-time and historical views, facilitating day-to-day analysis of metric trends. To ensure security for my RDS and Tableau environment, I took a cautious approach. I carefully curated a CSV file containing data for a single day, allowing visualization without direct access to RDS. This method enabled sharing the data publicly on Tableau Public, ensuring accessibility while safeguarding the integrity of the main database and visualization platform.
+I used Tableau Desktop to gain a comprehensive understanding of metrics like likes, views, and comments on the music videos. This visual analytics tool enabled the creation of real-time and historical views, facilitating day-to-day analysis of metric trends. To ensure security for my RDS and Tableau environment, I took a cautious approach. I carefully curated a CSV file containing data for a single day, allowing visualization without direct access to RDS. This method enabled sharing the data publicly on Tableau Public, ensuring accessibility while safeguarding the integrity of the main database and visualization platform. This was because I had problems with the extractions of Tableau, maybe a bug for the lastest version.
 
-## Things I Learned:
+## Version 2.0
+
+In this latest release, significant enhancements have been introduced to elevate the overall quality and maintainability of the project. The Python script underwent a comprehensive code refactoring, emphasizing improved readability. Unlike the initial version, where the primary focus was on functionality and the overarching project structure, version 2.0 places a strong emphasis on code clarity.
+
+One notable aspect of this release is the inclusion of unit tests for the script. This addition not only ensures the reliability of the codebase but also facilitates easier future development and maintenance.
+
+
+## Things I Learned
 I gained practical experience using Linux and enhanced my knowledge about different Linux distributions, revisited Docker as it had been a while since I last used it.
+I also learned about Decorators in Python and Unit Testing.
 
 
 ## Tech Stack
@@ -21,22 +29,21 @@ I gained practical experience using Linux and enhanced my knowledge about differ
     - google-api-python-client
     - psycopg2-binary
     - diagrams
+    - unit testing
 - SQL (PostgreSQL dialect)
 - AWS EC2 with Amazon Linux 2023 (AL2023)
 - RDS with PostgreSQL 15.4
 - Tableau Desktop 2023.3
 - Linux commands
 
-## Dashboard - JYP Girlgroups Youtube Stats
+## Tableau Dashboard - JYP Girlgroups Youtube Stats
 
 [![Dashboard in Tableau Public](img/tabpub.png)](https://public.tableau.com/views/JYPGirlgroupsYoutubeStats/JYPGirlgroupsYoutubeStats?:language=es-ES&:display_count=n&:origin=viz_share_link)
 
 Find the direct link to see the full dashboard in Tableau Public [here](https://public.tableau.com/views/JYPGirlgroupsYoutubeStats/JYPGirlgroupsYoutubeStats?:language=es-ES&:display_count=n&:origin=viz_share_link).
 
-A quick preview of the "Good" Dashboard
-![Tableau Desktop Dashboard 1](img/proffesional_dashabord_1.gif)
-
-![Tableau Desktop Dashboard 2](img/proffesional_dashabord_2.gif)
+A quick preview of the "Complete" Dashboard in Tableau Desktop
+![Tableau Desktop Dashboard Previes](img/tableau.gif)
 
 
 ## Development Process
